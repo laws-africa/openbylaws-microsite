@@ -1,7 +1,5 @@
 # openbylaws.org.za microsites
 
-[![Build Status](https://travis-ci.com/laws-africa/openbylaws.org.za.svg?branch=master)](http://travis-ci.com/laws-africa/openbylaws.org.za)
-
 This repo is for the openbylaws.org.za microsites, based on Jekyll. It builds the standalone microsites for some
 municipalities.
 
