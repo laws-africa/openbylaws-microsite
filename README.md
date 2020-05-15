@@ -19,6 +19,11 @@ In production, these steps are performed by Travis-CI, and the resulting site is
 
 This repo looks a bit empty, there are no places and by-laws. This saves us from having a repo tracking every change to every by-law. Instead, this repo is fleshed out by Travis-CI during the build phase.
 
+## How are the different sites hosted?
+
+Each site is hosted as a separate GitHub pages website. To support that, each microsite has its own repo which, during build time, clones this
+repo and runs the build process. For example, see [openbylaws-wc033](https://github.com/laws-africa/openbylaws-wc033)
+
 ## Local development
 
 1. Clone this repo
