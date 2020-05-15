@@ -35,3 +35,8 @@ This repo looks a bit empty, there are no places and by-laws. This saves us from
 1. Add the municipality name, code and by-laws website URL to `_data/places.json`
 2. Add the municipality logo and placard images to `img/municipalities/`, using the naming format `<code>-logo.png` and `<code>-placard.jpg`. Note that the two files have different extensions.
 3. Push to master
+4. Create a fork of [openbylaws-wc033](https://github.com/laws-africa/openbylaws-wc033), which will host the GitHub pages for the site and trigger a build.
+5. In that new repo, update `.travis.yml` to set the PLACE variable to the appropriate place code, and set the `fqdn` variable to the FQDN of the by-laws microsite.
+6. Still in that repo, replace the two secrets in `.travis.yml` with secrets for `INDIGO_API_AUTH_TOKEN` and `GITHUB_TOKEN`.
+7. Push that repo to GitHub
+8. Setup DNS for the new microsite to point at GitHub pages.
