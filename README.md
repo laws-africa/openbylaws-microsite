@@ -1,13 +1,19 @@
-# openbylaws.org.za
+# openbylaws.org.za microsites
 
 [![Build Status](https://travis-ci.com/laws-africa/openbylaws.org.za.svg?branch=master)](http://travis-ci.com/laws-africa/openbylaws.org.za)
 
-This repo is the openbylaws.org.za website, based on Jekyll. There are two major steps to building this website:
+This repo is for the openbylaws.org.za microsites, based on Jekyll. It builds the standalone microsites for some
+municipalities.
 
-1. `bin/update.py` is a Python script which pulls by-law information from Laws.Africa and sets up the appropriate Jekyll site structure.
+It is a fork of the [openbylaws.org.za repo](https://github.com/laws-africa/openbylaws.org.za) with minor customisations
+to make it single-municipality specific.
+
+There are three major steps to building this website:
+
+1. `bin/place.py` is a Python script to update the configuration and content to be for a particular municipality.
 2. `jekyll build` builds the website as a regular Jekyll website.
 
-In production, these two steps are performed by Travis-CI, and the resulting site is force pushed to the `gh-pages` branch as a static website.
+In production, these steps are performed by Travis-CI, and the resulting site is force pushed to the `gh-pages` branch as a static website.
 
 ## But where is the content?
 
@@ -21,7 +27,7 @@ This repo looks a bit empty, there are no places and by-laws. This saves us from
 3. Install Jekyll: `bundle install`
 4. Get your Laws.Africa API token from [edit.laws.africa/accounts/profile/api/](https://edit.laws.africa/accounts/profile/api/)
 5. `export INDIGO_API_AUTH_TOKEN=your-token`
-6. Pull in by-law content for just one region: `bin/update.py --quick za-cpt`
+6. Configure the site and pull in by-law content for just one municipality: `bin/place.py --quick za-wc033`
 7. Build the website: `bundle exec jekyll server --watch --incremental`
 
 ## Adding a new municipality

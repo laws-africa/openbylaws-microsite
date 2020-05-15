@@ -3,73 +3,42 @@
     <div class="row">
       <div class="col-md-6">
         <nav class="mb-3">
-          <h5>Openbylaws.org.za</h5>
+          <h5>{{ site.data.place.name }} By-laws</h5>
+
+          <ul>
+            <li><a href="/">By-laws</a></li>
+            <li><a href="{{ site.data.place.website_url }}">{{ site.data.place.name }} website</a></li>
+          </ul>
+
           <p>
-          Open By-laws is a community effort to make South African by-laws easy to find, ready and share. <a href="/about.html">Find out more</a>.
-          </p>
-          <p>
-          Thank you to <a href="/about.html#contributors">our contributors</a>. Much love.
-          </p>
-          <p>
-          A project by <a href="https://laws.africa">Laws.Africa</a>.
-          </p>
-          <img src="/img/logo-lg.png" style="max-width: 75px">
+          <img src="/img/municipalities/{{ site.data.place.code }}-logo.png" class="place-logo" style="max-width: 150px">
         </nav>
       </div>
 
-      <div class="col-md-3">
+      <div class="col-md-6">
         <nav class="mb-3">
-          <h5>Municipalities</h5>
+          <h5>&nbsp;</h5>
+
           <ul>
-            {% assign places = site.data.places | sort: "name" %}
-            {% for place in places %}
-              {% if place.special %}{% else %}
-                <li>
-                  <a href="{% if place.microsite %}https://{{ place.bucket }}/{% else %}/{{ place.code }}/eng/{% endif %}">{{ place.name }}</a>
-                </li>
-              {% endif %}
-            {% endfor %}
+            <li>
+              The by-laws are published through a partnership between {{ site.data.place.name }} Municipality and
+              <a href="https://openup.org.za">OpenUp</a>.
+            </li>
+            <li class="text-right">
+              <a href="https://openup.org.za"><img src="/img/openup-logo.svg" style="max-width: 150px"></a>
+            </li>
           </ul>
         </nav>
       </div>
 
-      <div class="col-md-3 mb-3">
-        <h5>Contact Us</h5>
-        <ul>
-          <li>
-            <a href="https://twitter.com/OpenByLawsZA">
-              <i class="fab fa-twitter"></i>
-              @OpenByLawsZA on Twitter
-            </a>
-          </li>
-          <li>
-            <a href="https://facebook.com/openbylaws.org.za">
-              <i class="fab fa-facebook-square"></i>
-              Open By-laws on Facebook
-            </a>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <a href="/contact.html">Contact Us</a>
-          </li>
-        </ul>
-        <p>
-        We aren't lawyers and cannot offer legal support. Always get a professional legal opinion.
-        </p>
-        <div>
-          Subscribe to the Laws.Africa newsletter:
-        </div>
-        {% include newsletter.html %}
-      </div>
     </div>
 
     <hr class="my-3">
 
     <div class="row">
       <div class="col-sm-9">
-        The HTML and XML legislation documents are licensed under
-        a <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">Creative Commons Attribution 4.0 International License</a>.
+        Legislation digitised by <a href="https://laws.africa">Laws.Africa</a> and licensed under a
+        <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">Creative Commons Attribution 4.0 International License</a>.
       </div>
       <div class="col-sm-3 text-right">
         <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">
@@ -78,17 +47,5 @@
       </div>
     </div>
 
-    <hr class="my-3">
-
-    <div class="row">
-      <div class="col-md-8">
-        <p class="small">
-        Laws.Africa is a non-profit organisation registered with the South African Department of Social Development, registration number 216-824 NPO.
-        </p>
-      </div>
-      <div class="col-md-4 text-right">
-        <img alt="Laws.Africa logo" src="/img/lawsafrica-logo-horizontal.png" width="200px">
-      </div>
-    </div>
   </div>
 </footer>

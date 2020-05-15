@@ -1,0 +1,32 @@
+#header {
+  .microsite-region-logo {
+    float: left;
+    width: 70px;
+    border: 1px solid #ccc;
+  }
+  
+  .microsite-region-name {
+    float: left;
+    margin-left: 10px;
+  }
+}
+
+#header.microsite-header {
+  .navbar-brand {
+    background-image: none;
+    float: left;
+    height: 50px;
+    padding-left: 0px;
+  }
+}
+
+#main-content .header-content {
+  h1,
+  h2 {
+    margin-left: 85px;
+  }
+
+  .breadcrumbs {
+    display: none;
+  }
+}

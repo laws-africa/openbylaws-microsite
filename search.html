@@ -18,7 +18,7 @@ extra_js:
   <div class="container">
     <div class="clearfix">
       <form action="/search.html" class="form-horizontal" id="search" method="get">
-        <input name="region" type="hidden" value="">
+        <input name="region" type="hidden" value="{{ site.data.place.code }}">
         <div class="input-group">
           <input autofocus="autofocus" class="form-control" id="query" name="q" placeholder="What are you looking for?" type="text">
           <div class="input-group-append">
@@ -41,19 +41,7 @@ extra_js:
 <script id="search-result-tmpl" type="x-tmpl-mustache">
 {% raw %}
 <div class="row">
-  <div class="col-md-3">
-    <div class="list-group">
-      <a class="list-group-item {{#no_region}}active{{/no_region}}" href="#">
-        <span>All Cities</span>
-      </a>
-      {{#regions}}
-      <a class="list-group-item {{#active}}active{{/active}}" data-code="{{ code }}" href="#">
-        <span>{{name}}</span>
-      </a>
-      {{/regions}}
-    </div>
-  </div>
-  <div class="col-md-9">
+  <div class="col-md-12">
     <p class="search-results-summary">
     Found {{ count }} by-laws
     </p>
