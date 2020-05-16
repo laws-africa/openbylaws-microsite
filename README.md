@@ -1,7 +1,5 @@
 # openbylaws.org.za microsites
 
-[![Build Status](https://travis-ci.com/laws-africa/openbylaws.org.za.svg?branch=master)](http://travis-ci.com/laws-africa/openbylaws.org.za)
-
 This repo is for the openbylaws.org.za microsites, based on Jekyll. It builds the standalone microsites for some
 municipalities.
 
@@ -45,3 +43,4 @@ repo and runs the build process. For example, see [openbylaws-wc033](https://git
 6. Still in that repo, replace the two secrets in `.travis.yml` with secrets for `INDIGO_API_AUTH_TOKEN` and `GITHUB_TOKEN`.
 7. Push that repo to GitHub
 8. Setup DNS for the new microsite to point at GitHub pages.
+9. In the github settings for the microsite repo, turn on "Enforce HTTPS"
