@@ -42,6 +42,7 @@
     "website-url": "http://www.mbizana.gov.za"
   },
   {
+    "bucket": "bergrivier.openbylaws.org.za",
     "bylaws_url": "https://www.bergmun.org.za/resource-category/policies-and-laws",
     "code": "za-wc013",
     "name": "Bergrivier",
