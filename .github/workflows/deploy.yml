@@ -43,7 +43,7 @@ jobs:
     - name: Deploy to gh-pages
       uses: JamesIves/github-pages-deploy-action@4.0.0
       with:
-        token: ${{ secrets.LA_ACTIONS_TOKEN }}
+        token: ${{ secrets.LA_DEPLOYBOT_PAT }}
         repository-name: laws-africa/openbylaws-${{ matrix.place }}
         branch: gh-pages
         folder: _site/

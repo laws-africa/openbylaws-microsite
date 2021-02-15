@@ -11,16 +11,16 @@ There are three major steps to building this website:
 1. `bin/place.py` is a Python script to update the configuration and content to be for a particular municipality.
 2. `jekyll build` builds the website as a regular Jekyll website.
 
-In production, these steps are performed by Travis-CI, and the resulting site is force pushed to the `gh-pages` branch as a static website.
+In production, these steps are performed by Github Actions and the resulting site is force pushed to the `gh-pages` branch on one of the openbylaws-PLACE repos, as a static website.
 
 ## But where is the content?
 
-This repo looks a bit empty, there are no places and by-laws. This saves us from having a repo tracking every change to every by-law. Instead, this repo is fleshed out by Travis-CI during the build phase.
+This repo looks a bit empty, there are no places and by-laws. This saves us from having a repo tracking every change to every by-law. Instead, this repo is fleshed out by Github Actions during the build phase.
 
 ## How are the different sites hosted?
 
-Each site is hosted as a separate GitHub pages website. To support that, each microsite has its own repo which, during build time, clones this
-repo and runs the build process. For example, see [openbylaws-wc033](https://github.com/laws-africa/openbylaws-wc033)
+Each site is hosted as a separate GitHub pages website. To support that, each microsite has its own empty repo which this repo
+pushes the final website to. For example, see [openbylaws-wc033](https://github.com/laws-africa/openbylaws-wc033)
 
 ## Local development
 
@@ -37,10 +37,8 @@ repo and runs the build process. For example, see [openbylaws-wc033](https://git
 
 1. Add the municipality name, code and by-laws website URL to `_data/places.json`
 2. Add the municipality logo and placard images to `img/municipalities/`, using the naming format `<code>-logo.png` and `<code>-placard.jpg`. Note that the two files have different extensions.
-3. Push to master
-4. Create a fork of [openbylaws-wc033](https://github.com/laws-africa/openbylaws-wc033), which will host the GitHub pages for the site and trigger a build.
-5. In that new repo, update `.travis.yml` to set the PLACE variable to the appropriate place code, and set the `fqdn` variable to the FQDN of the by-laws microsite.
-6. Still in that repo, replace the two secrets in `.travis.yml` with secrets for `INDIGO_API_AUTH_TOKEN` and `GITHUB_TOKEN`.
-7. Push that repo to GitHub
+5. Add the place code to the `place` list in `.github/workflows/deploy.yml` 
+4. Create a fork of [openbylaws-wc033](https://github.com/laws-africa/openbylaws-wc033), which will host the GitHub pages for the site.
+4. In THAT repo, add a `CNAME` file with the full domain name, such as `capeagulhas.openbylaws.org.za`
 8. Setup DNS for the new microsite to point at GitHub pages.
 9. In the github settings for the microsite repo, turn on "Enforce HTTPS"
