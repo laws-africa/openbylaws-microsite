@@ -37,7 +37,7 @@ jobs:
         JEKYLL_ENV: production
         INDIGO_API_AUTH_TOKEN: ${{ secrets.INDIGO_API_AUTH_TOKEN }}
       run: |
-        python bin/place.py za-${{ matric.place }}
+        python bin/place.py za-${{ matrix.place }}
         bundle exec jekyll build --trace
 
     - name: Deploy to gh-pages
