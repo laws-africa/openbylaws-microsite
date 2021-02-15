@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        place: [ec443]
+        place: [ec443, wc011, wc012, wc013, wc033]
 
     steps:
     - uses: actions/checkout@v2
