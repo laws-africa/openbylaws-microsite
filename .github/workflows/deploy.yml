@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        place: [za-ec443]
+        place: [ec443]
 
     steps:
     - uses: actions/checkout@v2
