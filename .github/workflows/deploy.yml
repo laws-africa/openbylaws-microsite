@@ -1,0 +1,51 @@
+name: Deploy
+
+on:
+  push:
+    branches: [master]
+  schedule:
+    - cron: '0 1 * * *'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        place: [za-ec443]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.7
+
+    - name: Set up Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: '2.6'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        bundle install
+
+    - name: Build
+      env:
+        JEKYLL_ENV: production
+        INDIGO_API_AUTH_TOKEN: ${{ secrets.INDIGO_API_AUTH_TOKEN }}
+      run: |
+        python bin/place.py za-${{ matricx.place }}
+        bundle exec jekyll build --trace
+
+    - name: Deploy to gh-pages
+      uses: JamesIves/github-pages-deploy-action@4.0.0
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        repository-name: laws-africa/openbylaws-${{ matrix.place }}
+        branch: gh-pages
+        folder: _site/
+        single-commit: true
+        dry-run: true
