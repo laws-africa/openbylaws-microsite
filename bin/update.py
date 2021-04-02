@@ -8,12 +8,13 @@ from datetime import datetime, timedelta
 from itertools import groupby, chain
 import argparse
 import copy
+import concurrent.futures
 
 import yaml
 import requests
 
 # setup logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)8s %(message)s')
+logging.basicConfig(level=logging.INFO, format='%(asctime)s %(thread)d %(levelname)8s %(message)s')
 log = logging.getLogger(__name__)
 
 TIMEOUT = 30
@@ -58,7 +59,8 @@ class Updater:
             places = json.load(f)
 
         for place in places:
-            if not place_codes or place['code'] in place_codes:
+            # if we're doing all places, ignore microsites
+            if (not place_codes and not place.get('microsite')) or place['code'] in place_codes:
                 self.write_place(place)
 
         with open("_data/places.json", "w") as f:
@@ -75,8 +77,9 @@ class Updater:
         with open(f"_data/works/{place['code']}.json", "w") as f:
             json.dump(works, f, indent=2, sort_keys=True)
 
-        for work in works:
-            self.write_work(place, work)
+        with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+            futures = [executor.submit(self.write_work, place, work) for work in works]
+            concurrent.futures.wait(futures)
 
         if place.get('special'):
             return
@@ -177,8 +180,9 @@ class Updater:
 
         # walk through everything published on indigo
         url = f"/akn/{place['code']}/.json"
+        params = place.get('params', {})
         while url:
-            resp = self.indigo.get(INDIGO_URL + url, timeout=TIMEOUT)
+            resp = self.indigo.get(INDIGO_URL + url, params=params, timeout=TIMEOUT)
             resp.raise_for_status()
             data = resp.json()
             works.extend(data['results'])

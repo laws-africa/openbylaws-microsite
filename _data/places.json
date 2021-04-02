@@ -59,13 +59,26 @@
     "website_url": "http://www.cederbergmun.gov.za/"
   },
   {
+    "bylaws_url": "http://www.swartland.org.za/pages/english/documents/by-laws.php",
+    "code": "za-wc015",
+    "name": "Swartland"
+  },
+  {
     "bylaws_url": "https://www.kannaland.gov.za/resource-category/policies-and-laws",
     "code": "za-wc041",
     "name": "Kannaland"
   },
   {
+    "bylaws_url": "http://www.drakenstein.gov.za/about-us/administration/acts-and-bylaws",
+    "code": "za-wc023",
+    "name": "Drakenstein"
+  },
+  {
     "code": "za",
     "name": "South Africa",
+    "params": {
+      "taxonomy": "lawsafrica-special:COVID-19"
+    },
     "special": true
   }
 ]
