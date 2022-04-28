@@ -42,3 +42,4 @@ pushes the final website to. For example, see [openbylaws-wc033](https://github.
 4. In THAT repo, add a `CNAME` file with the full domain name, such as `capeagulhas.openbylaws.org.za`
 8. Setup DNS for the new microsite to point at GitHub pages.
 9. In the github settings for the microsite repo, turn on "Enforce HTTPS"
+
